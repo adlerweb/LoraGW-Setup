@@ -85,7 +85,7 @@ apt-get update && apt-get upgrade -y && apt-get update
 apt-get install -y git-core build-essential ntp scons i2c-tools
 
 echo "Updating python dependencies"
-apt-get install -y python-dev swig python-psutil python-rpi.gpio python-pip
+apt-get install -y python3-dev swig python3-psutil python3-rpi.gpio python3-pip
 python -m pip install --upgrade pip setuptools wheel
 
 if [[ ! -d /home/loragw ]]; then
