@@ -187,10 +187,6 @@ replace ./start.sh "^.*RESET_BCM_PIN=.*$" "SX1301_RESET_BCM_PIN=$GW_RESET_PIN"
 
 grep "Pi\ 3" /proc/device-tree/model >/dev/null
 if [ $? -eq 0 ]; then
-	echo "Installing nodejs v10 for Raspberry PI 3"
-	curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-	apt-get install nodejs
-
   # iC880a and RPI 3 Setup Activity LED and Power OFF Led 
   if [[ $BOARD_TARGET == 3 ]]; then
     replaceAppend /boot/config.txt "^dtoverlay=gpio-poweroff.*$" "dtoverlay=gpio-poweroff,gpiopin=24"
@@ -199,14 +195,7 @@ if [ $? -eq 0 ]; then
 
 fi
 
-grep "Pi\ Zero" /proc/device-tree/model >/dev/null
-if [ $? -eq 0 ]; then
-	echo "Installing nodejs lts for Raspberry PI Zero"
-	wget -O - https://raw.githubusercontent.com/sdesalas/node-pi-zero/master/install-node-v.lts.sh | bash
-	append1 /home/loragw/.profile "^.*PATH:/opt/nodejs/bin.*$" "export PATH=$PATH:/opt/nodejs/bin"
-	append1 /home/loragw/.profile "^.*NODE_PATH=.*$" "NODE_PATH=/opt/nodejs/lib/node_modules"
-fi
-
+apt-get -y install nodejs
 apt-get -y install protobuf-compiler libprotobuf-dev libprotoc-dev automake libtool autoconf 
 
 # Board has WS1812B LED
