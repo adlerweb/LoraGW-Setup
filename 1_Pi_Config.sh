@@ -81,11 +81,11 @@ selectN() {
 }
 
 echo "Updating dependencies"
-apt-get update && apt-get upgrade -y --force-yes && apt-get update
-apt-get install -y --force-yes git-core build-essential ntp scons i2c-tools
+apt-get update && apt-get upgrade -y && apt-get update
+apt-get install -y git-core build-essential ntp scons i2c-tools
 
 echo "Updating python dependencies"
-apt-get install -y --force-yes python-dev swig python-psutil python-rpi.gpio python-pip
+apt-get install -y python-dev swig python-psutil python-rpi.gpio python-pip
 python -m pip install --upgrade pip setuptools wheel
 
 if [[ ! -d /home/loragw ]]; then
