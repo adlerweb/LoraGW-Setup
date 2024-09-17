@@ -189,8 +189,8 @@ grep "Pi\ 3" /proc/device-tree/model >/dev/null
 if [ $? -eq 0 ]; then
   # iC880a and RPI 3 Setup Activity LED and Power OFF Led 
   if [[ $BOARD_TARGET == 3 ]]; then
-    replaceAppend /boot/config.txt "^dtoverlay=gpio-poweroff.*$" "dtoverlay=gpio-poweroff,gpiopin=24"
-    replaceAppend /boot/config.txt "^dtoverlay=pi3-act-led.*$" "dtoverlay=pi3-act-led,gpio=23"
+    replaceAppend /boot/firmware/config.txt "^dtoverlay=gpio-poweroff.*$" "dtoverlay=gpio-poweroff,gpiopin=24"
+    replaceAppend /boot/firmware/config.txt "^dtoverlay=pi3-act-led.*$" "dtoverlay=pi3-act-led,gpio=23"
   fi
 
 fi
@@ -230,7 +230,7 @@ fi
 if [[ "$EN_OLED" =~ ^(yes|y|Y)$ ]]; then
   echo "Configuring and installing OLED driver"
   cd /home/loragw/
-  replaceAppend /boot/config.txt "^.*dtparam=i2c_arm=.*$" "dtparam=i2c_arm=on,i2c_baudrate=400000"
+  replaceAppend /boot/firmware/config.txt "^.*dtparam=i2c_arm=.*$" "dtparam=i2c_arm=on,i2c_baudrate=400000"
   apt-get install -y --force-yes libfreetype6-dev libjpeg-dev
 
   echo "Install luma OLED core"
