@@ -147,7 +147,7 @@ read EN_TTN
 if [[ ! "$EN_TTN" =~ ^(no|n|N)$ ]]; then
 
   echo "It's now time to create and configure your gateway on TTN"
-  echo "See https://www.thethingsnetwork.org/docs/gateways/registration.html#via-gateway-connector"
+  echo "See https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/"
   echo "once done, grab your gateway id (GW_ID) and key (GW_KEY) and paste them here"
 
   if [[ $GW_ID == "" ]]; then
@@ -160,7 +160,7 @@ if [[ ! "$EN_TTN" =~ ^(no|n|N)$ ]]; then
 
   if [[ $GW_KEY == "" ]]; then
       echo "No environement for GW_KEY"
-      echo "See https://www.thethingsnetwork.org/docs/gateways/registration.html#via-gateway-connector"
+      echo "See https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/#create-gateway-api-key"
       echo ""
       echo -n "Please enter GW_KEY: "
       read GW_KEY
